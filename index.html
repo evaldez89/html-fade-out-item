@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- path to the jquery library -->
+    <script src="./jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Button to add a new item to the list -->
+    <button onclick="addChild()">Add Item</button>
+
+    <!-- Div to store the items -->
+    <div id="my-winner-list"></div>
+
+</body>
+<script>
+    // Get the list to stores the items
+    var list = document.getElementById('my-winner-list');
+
+    // Function to add a new child to the list, this is the function called when the button is clicked
+    function addChild() {
+        let counter = list.childElementCount + 1;  // Count the item on the list
+        let node = document.createElement('LI');  // Create new <li></li> element
+        let text = document.createTextNode('Item ' + counter);  // Text for the new element
+        let itemId = 'item-'+ counter;  // Compose the string ID for the new element
+        node.setAttribute('id', itemId);  // Set the ID to the new created element
+        node.appendChild(text);  // Add the text to the new element
+        list.appendChild(node);  // Append the new item to the list
+        let selector = `#${itemId}`;  // Compose the selector string
+        $(selector).fadeOut(5000);  // Base on the selector, set the fadeout with 5 seconds
+    }
+</script>
+</html>
